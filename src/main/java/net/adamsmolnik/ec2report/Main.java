@@ -56,12 +56,7 @@ public class Main {
 	}
 
 	private static String getName(List<Tag> tags) {
-		for (Tag tag : tags) {
-			if ("Name".equals(tag.getKey())) {
-				return tag.getValue();
-			}
-		}
-		return " ";
+		return tags.stream().filter(t -> "Name".equals(t.getKey())).findFirst().orElse(new Tag("", " ")).getValue();
 	}
 
 }
